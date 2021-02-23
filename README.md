@@ -26,7 +26,7 @@ However, a summary of the current functionality is given below:
  - LEDs: The LEDs will all simulaneously flash RED, AMBER, and GREEN colours, for 1 second each.
  - MFD: The MFD will initially display "Systems booting, please wait". After 1 second, it will display "Systems booting, loading..." whereby each dot is added after a 1 second pause, to give the impression of a loading screen (when in reality the MFD is being overwritten each time). Finally, roughly when the game has loaded (depending on how fast your game loads), the MFD will display "Welcome, [CMDR NAME]" in addition to "SHIP: [Ship Name], [Ship Ident]" which will be on the bottom line of the MFD. [Ship Ident] is the 3 letter/number long code you can give your ship in the Livery screen. 
 
-
+### Rest to be added
 
 ## Disclaimer:
 I hereby DO NOT accept any responsibility for any damage to hardware or software caused by these files, they are in an ALPHA state and use is entirely at your own risk.
