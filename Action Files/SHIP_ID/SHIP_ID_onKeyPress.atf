@@ -1,0 +1,5 @@
+PROGRAM onKeyPress
+
+Print SHIP: %(EventShip_Name), %(EventShip_Ident)
+
+END PROGRAM
