@@ -1,6 +1,6 @@
 # EDDX52 EDD Implementation
 
- A set of files for EDDiscovery, using the EDDX52 plugin dll files provided by wulkanat.
+ A set of files for EDDiscovery, using the EDDX52 plugin dll files provided by EDDX52.
  
  - EDD (Elite Dangerous Discovery) is the tool used to create and program the Action files, which execute DLL calls based on in-game or external events.
  EDDcan be found here: https://github.com/EDDiscovery/EDDiscovery/
