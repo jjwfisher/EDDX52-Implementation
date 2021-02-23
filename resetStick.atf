@@ -1,0 +1,5 @@
+PROGRAM onKeyPress
+
+DLLCall EDDX52, reset
+
+END PROGRAM

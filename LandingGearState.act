@@ -1,0 +1,19 @@
+﻿ACTIONFILE V4
+
+ENABLED True
+
+EVENT UILandingGear, UILandingGearState, "", Condition AlwaysTrue
+
+//*************************************************************
+// UILandingGearState
+// Events: UILandingGear
+//*************************************************************
+PROGRAM UILandingGearState
+
+If EventClass_Gear IsTrue
+    Return "Gear Down"
+Else 
+    Return "Gear Up"
+
+END PROGRAM
+

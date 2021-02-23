@@ -1,0 +1,38 @@
+PROGRAM Hardpoints
+
+If EventClass_Deployed IsTrue
+    DLLCall EDDX52, setLED, FIRE, ON
+    DLLCall EDDX52, setLED, FIRE_A, RED
+    DLLCall EDDX52, setLED, FIRE_B, RED
+    DLLCall EDDX52, setLED, FIRE_D, RED
+    DLLCall EDDX52, setLED, FIRE_E, RED
+    DLLCall EDDX52, setLED, TOGGLE_1_2, RED
+    DLLCall EDDX52, setLED, TOGGLE_3_4, RED
+    DLLCall EDDX52, setLED, TOGGLE_5_6, RED
+    DLLCall EDDX52, setLED, CLUTCH, RED
+    DLLCall EDDX52, setLED, POV_2, RED
+    DLLCall EDDX52, advSetLED, 19, 1
+    Sleep 100
+    DLLCall EDDX52, setString, 0, "Hardpoints", ID_CMODE
+	DLLCall EDDX52, setString, 1, "CMDR %(Commander)", ID_CMDR
+	DLLCall EDDX52, setString, 2, "SHIP: %(EventShip_Name), %(EventShip_Ident)", ID_SHIP
+    Break 
+Else 
+    DLLCall EDDX52, setLED, FIRE, ON
+    DLLCall EDDX52, setLED, FIRE_A, GREEN
+    DLLCall EDDX52, setLED, FIRE_B, GREEN
+    DLLCall EDDX52, setLED, FIRE_D, GREEN
+    DLLCall EDDX52, setLED, FIRE_E, GREEN
+    DLLCall EDDX52, setLED, TOGGLE_1_2, GREEN
+    DLLCall EDDX52, setLED, TOGGLE_3_4, GREEN
+    DLLCall EDDX52, setLED, TOGGLE_5_6, GREEN
+    DLLCall EDDX52, setLED, CLUTCH, GREEN
+    DLLCall EDDX52, setLED, POV_2, GREEN
+    DLLCall EDDX52, advSetLED, 19, 1
+    Sleep 100
+    DLLCall EDDX52, setString, 0, "Superluminal", ID_FMODE
+	DLLCall EDDX52, setString, 1, "CMDR %(Commander)", ID_CMDR
+	DLLCall EDDX52, setString, 2, "SHIP: %(EventShip_Name), %(EventShip_Ident)", ID_SHIP
+    Break 
+
+END PROGRAM

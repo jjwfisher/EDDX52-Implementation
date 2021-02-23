@@ -1,0 +1,5 @@
+PROGRAM Shutdown
+
+DLLCall EDDX52, setLED, FIRE, OFF
+
+END PROGRAM

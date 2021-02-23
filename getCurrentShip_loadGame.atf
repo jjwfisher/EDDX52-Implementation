@@ -1,0 +1,6 @@
+PROGRAM getCurrentShip_loadGame
+
+Global EventShip_Name = %(EventShip_Name)
+Global EventShip_Ident = %(EventShip_Ident)
+
+END PROGRAM

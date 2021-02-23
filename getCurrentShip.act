@@ -1,0 +1,31 @@
+﻿ACTIONFILE V4
+
+ENABLED True
+
+EVENT LoadGame, getCurrentShip_loadGame, "", Condition AlwaysTrue
+EVENT Loadout, getCurrentShip_loadout, "", Condition AlwaysTrue
+
+//*************************************************************
+// getCurrentShip_loadGame
+// Events: LoadGame
+//*************************************************************
+PROGRAM getCurrentShip_loadGame
+
+Global EventShip_Name = %(EventShip_Name)
+Global EventShip_Ident = %(EventShip_Ident)
+Print Set ship to: %(EventShip_Name), %(EventShip_Ident)
+
+END PROGRAM
+
+//*************************************************************
+// getCurrentShip_loadout
+// Events: Loadout
+//*************************************************************
+PROGRAM getCurrentShip_loadout
+
+Global EventShip_Name = %(EventShip_Name)
+Global EventShip_Ident = %(EventShip_Ident)
+Print Set ship to: %(EventShip_Name), %(EventShip_Ident)
+
+END PROGRAM
+

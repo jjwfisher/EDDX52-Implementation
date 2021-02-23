@@ -1,0 +1,16 @@
+﻿ACTIONFILE V4
+
+ENABLED True
+
+EVENT onKeyPress, onKeyPress, "", KeyPress $== Ctrl+PageUp
+
+//*************************************************************
+// onKeyPress
+// Events: onKeyPress?(KeyPress $== Ctrl+PageUp)
+//*************************************************************
+PROGRAM onKeyPress
+
+DLLCall EDDX52, reset
+
+END PROGRAM
+

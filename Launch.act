@@ -1,0 +1,26 @@
+﻿ACTIONFILE V4
+
+ENABLED True
+
+EVENT Undocked, Undocked, "", Condition AlwaysTrue
+
+//*************************************************************
+// Undocked
+// Events: Undocked
+//*************************************************************
+PROGRAM Undocked
+
+DLLCall EDDX52, resetMFD
+DLLCall EDDX52, setString, 0, "Engines at 100%", ID_ENGTAKEOFF
+DLLCall EDDX52, setString, 1, "Clear to liftoff", ID_LIFTOFF
+DLLCall EDDX52, setString, 2, "CMDR %(Commander)", ID_CMDR
+Sleep 5000
+DLLCall EDDX52, setString, 1, "CMDR %(Commander)", ID_CMDR
+DLLCall EDDX52, setString, 2, "SHIP: %(EventShip_Name), %(EventShip_Ident)", ID_SHIP
+Sleep 1000
+Event FROM %(EventJID) BACKWARD LoadGame
+Call UILandingGearState
+Call Landing_Mode(EventShip_Name="",EventShip_Ident="")
+
+END PROGRAM
+

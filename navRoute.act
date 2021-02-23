@@ -1,0 +1,17 @@
+﻿ACTIONFILE V4
+
+ENABLED True
+
+EVENT NavRoute, noOfJumps, "", Condition AlwaysTrue
+
+//*************************************************************
+// noOfJumps
+// Events: NavRoute
+//*************************************************************
+PROGRAM noOfJumps
+
+Let EventClass_RouteCount = (%(EventClass_RouteCount) - 1)
+DLLCall EDDX52, peakMFD, "Jumps to sys: %(EventClass_RouteCount)", 6
+
+END PROGRAM
+
