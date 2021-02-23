@@ -1,4 +1,4 @@
-# EDDX52 EDD Implementation
+# EDDX52 Implementation
 
  A set of files for EDDiscovery, using the EDDX52 plugin dll files provided by EDDX52.
  
