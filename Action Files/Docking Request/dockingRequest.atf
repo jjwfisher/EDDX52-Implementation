@@ -1,5 +1,0 @@
-PROGRAM DockingGranted
-
-DLLCall EDDX52, peakMFD, "Docking Granted. Pad %(EventClass_LandingPad)", 5
-
-END PROGRAM
