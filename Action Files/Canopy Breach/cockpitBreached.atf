@@ -1,6 +1,5 @@
 PROGRAM CockpitBreached
 
-
 DLLCall EDDX52, setString, 0, "CANOPY BREACH.", ID_CANOP
 DLLCall EDDX52, setString, 1, "ALERT. CANOPY", ID_CANOP
 DLLCall EDDX52, setString, 1, "BREACHED. ALERT.", ID_CANOP
