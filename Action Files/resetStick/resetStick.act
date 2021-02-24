@@ -2,13 +2,22 @@
 
 ENABLED True
 
-EVENT onKeyPress, onKeyPress, "", KeyPress $== Ctrl+PageUp
+EVENT onKeyPress, resetStick, "", KeyPress $== Ctrl+PageUp
 
 //*************************************************************
 // onKeyPress
-// Events: onKeyPress?(KeyPress $== Ctrl+PageUp)
 //*************************************************************
 PROGRAM onKeyPress
+
+DLLCall EDDX52, reset
+
+END PROGRAM
+
+//*************************************************************
+// resetStick
+// Events: onKeyPress?(KeyPress $== Ctrl+PageUp)
+//*************************************************************
+PROGRAM resetStick
 
 DLLCall EDDX52, reset
 

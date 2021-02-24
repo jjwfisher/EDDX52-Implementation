@@ -1,4 +1,4 @@
-PROGRAM onKeyPress
+PROGRAM resetStick
 
 DLLCall EDDX52, reset
 
