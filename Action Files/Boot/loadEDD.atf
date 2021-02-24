@@ -4,7 +4,7 @@ Print Welcome, CMDR %(Commander)!
 DLLCall EDDX52, resetMFD
 DLLCall EDDX52, setString, 0, "Welcome, ", ID_WELC
 DLLCall EDDX52, setString, 1, "CMDR %(Commander)", ID_CMDR
-sleep 4000
+Sleep 4000
 DLLCall EDDX52, setString, 0, "Waiting for", ID_EDBOOT
 DLLCall EDDX52, setString, 1, "ED Boot...", ID_EDBOOT
 

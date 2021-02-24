@@ -1,5 +1,6 @@
 PROGRAM loadGame
 
+Call getCurrentShip_loadGame(EventClass_ShipName="%(EventClass_ShipName)",EventClass_ShipIdent="%(EventClass_ShipIdent)")
 DLLCall EDDX52, setLED, FIRE, ON
 DLLCall EDDX52, setLED, FIRE_A, RED
 DLLCall EDDX52, setLED, FIRE_B, RED
@@ -43,6 +44,8 @@ DLLCall EDDX52, setString, 1, "loading...", ID_SYS
 Sleep 1000
 DLLCall EDDX52, setString, 0, "Welcome,", ID_WELC
 DLLCall EDDX52, setString, 1, "CMDR %(Commander)", ID_CMDR
-DLLCall EDDX52, setString, 2, "SHIP: %(EventShip_Name), %(EventShip_Ident)", ID_SHIP
+DLLCall EDDX52, setString, 2, "SHIP: %(CurrentShip_Name), %(CurrentShip_Ident)", ID_SHIP
+Sleep 1000
+DLLCall EDDX52, setString, 0, Waiting, ID_MODE
 
 END PROGRAM
