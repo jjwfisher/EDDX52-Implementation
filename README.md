@@ -29,4 +29,4 @@ However, a summary of the current functionality is given below:
 ### Rest to be added
 
 ## Disclaimer:
-I hereby DO NOT accept any responsibility for any damage to hardware or software caused by these files, they are in an ALPHA state and use is entirely at your own risk.
+I hereby DO NOT accept any responsibility for any damage to hardware or software caused by my files hosted on this GitHub repository, they are in an ALPHA state and use is entirely at your own risk.
