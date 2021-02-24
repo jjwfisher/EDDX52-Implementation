@@ -11,9 +11,11 @@ EVENT UILandingGear, UILandingGearState, "", Condition AlwaysTrue
 PROGRAM UILandingGearState
 
 If EventClass_Gear IsTrue
-    Return "Gear Down"
+    Global gearState = Down
+ElseIf EventClass_Gear IsFalse
+    Global gearState = Up
 Else 
-    Return "Gear Up"
+    Break 
 
 END PROGRAM
 

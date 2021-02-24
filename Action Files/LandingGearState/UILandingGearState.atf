@@ -1,8 +1,10 @@
 PROGRAM UILandingGearState
 
 If EventClass_Gear IsTrue
-    Return "Gear Down"
-Else 
-    Return "Gear Up"
+    Global gearState = Down
+ElseIf EventClass_Gear IsFalse 
+    Global gearState = Up
+Else
+	Break
 
 END PROGRAM
