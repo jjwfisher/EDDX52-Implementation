@@ -1,4 +1,4 @@
-PROGRAM getCurrentShip_loadGame
+PROGRAM getCurrentShip_NewName
 
 Global CurrentShip_Name = %(EventClass_ShipName)
 Global CurrentShip_Ident = %(EventClass_ShipIdent)

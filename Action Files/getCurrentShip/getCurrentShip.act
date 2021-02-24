@@ -4,6 +4,7 @@ ENABLED True
 
 EVENT LoadGame, getCurrentShip_loadGame, "", Condition AlwaysTrue
 EVENT Loadout, getCurrentShip_loadout, "", Condition AlwaysTrue
+EVENT SetUserShipName, getCurrentShip_NewName, "", Condition AlwaysTrue
 
 //*************************************************************
 // getCurrentShip_loadGame
@@ -11,9 +12,9 @@ EVENT Loadout, getCurrentShip_loadout, "", Condition AlwaysTrue
 //*************************************************************
 PROGRAM getCurrentShip_loadGame
 
-Global EventShip_Name = %(EventShip_Name)
-Global EventShip_Ident = %(EventShip_Ident)
-Print Set ship to: %(EventShip_Name), %(EventShip_Ident)
+Global CurrentShip_Name = %(EventClass_ShipName)
+Global CurrentShip_Ident = %(EventClass_ShipIdent)
+Print Set ship to: %(CurrentShip_Name), %(CurrentShip_Ident)
 
 END PROGRAM
 
@@ -23,9 +24,21 @@ END PROGRAM
 //*************************************************************
 PROGRAM getCurrentShip_loadout
 
-Global EventShip_Name = %(EventShip_Name)
-Global EventShip_Ident = %(EventShip_Ident)
-Print Set ship to: %(EventShip_Name), %(EventShip_Ident)
+Global CurrentShip_Name = %(EventClass_ShipName)
+Global CurrentShip_Ident = %(EventClass_ShipIdent)
+Print Set ship to: %(CurrentShip_Name), %(CurrentShip_Ident)
+
+END PROGRAM
+
+//*************************************************************
+// getCurrentShip_NewName
+// Events: SetUserShipName
+//*************************************************************
+PROGRAM getCurrentShip_NewName
+
+Global CurrentShip_Name = %(EventClass_ShipName)
+Global CurrentShip_Ident = %(EventClass_ShipIdent)
+Print Set ship to: %(CurrentShip_Name), %(CurrentShip_Ident)
 
 END PROGRAM
 

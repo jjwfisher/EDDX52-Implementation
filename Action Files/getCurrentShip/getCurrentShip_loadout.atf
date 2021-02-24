@@ -1,6 +1,7 @@
 PROGRAM getCurrentShip_loadout
 
-Global EventShip_Name = %(EventShip_Name)
-Global EventShip_Ident = %(EventShip_Ident)
+Global CurrentShip_Name = %(EventClass_ShipName)
+Global CurrentShip_Ident = %(EventClass_ShipIdent)
+Print Set ship to: %(CurrentShip_Name), %(CurrentShip_Ident)
 
 END PROGRAM
