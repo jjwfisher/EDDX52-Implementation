@@ -65,7 +65,8 @@ END PROGRAM
 //*************************************************************
 PROGRAM Landing_Mode
 
-If EventClass_Gear IsTrue
+DLLCall EDDX52, setString, 0, "", ID_MODE
+If gearState $== Down
     DLLCall EDDX52, setLED, FIRE, ON
     DLLCall EDDX52, setLED, FIRE_A, YELLOW
     DLLCall EDDX52, setLED, FIRE_B, YELLOW
@@ -77,10 +78,10 @@ If EventClass_Gear IsTrue
     DLLCall EDDX52, setLED, CLUTCH, YELLOW
     DLLCall EDDX52, setLED, POV_2, YELLOW
     DLLCall EDDX52, advSetLED, 19, 1
-    Sleep 100
-    DLLCall EDDX52, editMFDEntry, ID_MODE, "Landing"
+    Sleep 500
+    DLLCall EDDX52, setString, 0, Landing, ID_MODE
     Break 
-Else 
+ElseIf gearState $== Up
     DLLCall EDDX52, setLED, FIRE, ON
     DLLCall EDDX52, setLED, FIRE_A, GREEN
     DLLCall EDDX52, setLED, FIRE_B, GREEN
@@ -92,8 +93,10 @@ Else
     DLLCall EDDX52, setLED, CLUTCH, GREEN
     DLLCall EDDX52, setLED, POV_2, GREEN
     DLLCall EDDX52, advSetLED, 19, 1
-    Sleep 100
-    DLLCall EDDX52, editMFDEntry, ID_MODE, "Superluminal"
+    Sleep 500
+    DLLCall EDDX52, setString, 0, Superluminal, ID_MODE
+    Break 
+Else 
     Break 
 
 END PROGRAM
@@ -114,6 +117,7 @@ END PROGRAM
 //*************************************************************
 PROGRAM Hardpoints
 
+DLLCall EDDX52, setString, 0, "", ID_MODE
 If EventClass_Deployed IsTrue
     DLLCall EDDX52, setLED, FIRE, ON
     DLLCall EDDX52, setLED, FIRE_A, RED
@@ -127,7 +131,7 @@ If EventClass_Deployed IsTrue
     DLLCall EDDX52, setLED, POV_2, RED
     DLLCall EDDX52, advSetLED, 19, 1
     Sleep 100
-    DLLCall EDDX52, editMFDEntry, ID_MODE, "Hardpoints"
+    DLLCall EDDX52, setString, 0, Hardpoints, ID_MODE
     Break 
 Else 
     DLLCall EDDX52, setLED, FIRE, ON
@@ -142,7 +146,7 @@ Else
     DLLCall EDDX52, setLED, POV_2, GREEN
     DLLCall EDDX52, advSetLED, 19, 1
     Sleep 100
-    DLLCall EDDX52, editMFDEntry, ID_MODE, "Superluminal"
+    DLLCall EDDX52, setString, 0, Superluminal, ID_MODE
     Break 
 
 END PROGRAM

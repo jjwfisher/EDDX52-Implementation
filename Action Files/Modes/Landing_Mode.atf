@@ -1,6 +1,7 @@
 PROGRAM Landing_Mode
 
-If EventClass_Gear IsTrue
+DLLCall EDDX52, setString, 0, "", ID_MODE
+If gearState $== Down
     DLLCall EDDX52, setLED, FIRE, ON
     DLLCall EDDX52, setLED, FIRE_A, YELLOW
     DLLCall EDDX52, setLED, FIRE_B, YELLOW
@@ -12,12 +13,10 @@ If EventClass_Gear IsTrue
     DLLCall EDDX52, setLED, CLUTCH, YELLOW
     DLLCall EDDX52, setLED, POV_2, YELLOW
     DLLCall EDDX52, advSetLED, 19, 1
-    Sleep 100
-    DLLCall EDDX52, setString, 0, "Landing", ID_LMODE
-    DLLCall EDDX52, setString, 1, "CMDR %(Commander)", ID_CMDR
-    DLLCall EDDX52, setString, 2, "SHIP: %(EventShip_Name), %(EventShip_Ident)", ID_SHIP
+    Sleep 500
+    DLLCall EDDX52, setString, 0, Landing, ID_MODE
     Break 
-Else 
+ElseIf gearState $== Up
     DLLCall EDDX52, setLED, FIRE, ON
     DLLCall EDDX52, setLED, FIRE_A, GREEN
     DLLCall EDDX52, setLED, FIRE_B, GREEN
@@ -29,10 +28,10 @@ Else
     DLLCall EDDX52, setLED, CLUTCH, GREEN
     DLLCall EDDX52, setLED, POV_2, GREEN
     DLLCall EDDX52, advSetLED, 19, 1
-    Sleep 100
-    DLLCall EDDX52, setString, 0, Superluminal, ID_FMODE
-    DLLCall EDDX52, setString, 1, "CMDR %(Commander)", ID_CMDR
-    DLLCall EDDX52, setString, 2, "SHIP: %(EventShip_Name), %(EventShip_Ident)", ID_SHIP
+    Sleep 500
+    DLLCall EDDX52, setString, 0, Superluminal, ID_MODE
+    Break 
+Else 
     Break 
 
 END PROGRAM

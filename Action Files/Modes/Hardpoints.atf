@@ -1,5 +1,6 @@
 PROGRAM Hardpoints
 
+DLLCall EDDX52, setString, 0, "", ID_MODE
 If EventClass_Deployed IsTrue
     DLLCall EDDX52, setLED, FIRE, ON
     DLLCall EDDX52, setLED, FIRE_A, RED
@@ -13,9 +14,7 @@ If EventClass_Deployed IsTrue
     DLLCall EDDX52, setLED, POV_2, RED
     DLLCall EDDX52, advSetLED, 19, 1
     Sleep 100
-    DLLCall EDDX52, setString, 0, "Hardpoints", ID_CMODE
-	DLLCall EDDX52, setString, 1, "CMDR %(Commander)", ID_CMDR
-	DLLCall EDDX52, setString, 2, "SHIP: %(EventShip_Name), %(EventShip_Ident)", ID_SHIP
+    DLLCall EDDX52, setString, 0, Hardpoints, ID_MODE
     Break 
 Else 
     DLLCall EDDX52, setLED, FIRE, ON
@@ -30,9 +29,7 @@ Else
     DLLCall EDDX52, setLED, POV_2, GREEN
     DLLCall EDDX52, advSetLED, 19, 1
     Sleep 100
-    DLLCall EDDX52, setString, 0, "Superluminal", ID_FMODE
-	DLLCall EDDX52, setString, 1, "CMDR %(Commander)", ID_CMDR
-	DLLCall EDDX52, setString, 2, "SHIP: %(EventShip_Name), %(EventShip_Ident)", ID_SHIP
+    DLLCall EDDX52, setString, 0, Superluminal, ID_MODE
     Break 
 
 END PROGRAM
