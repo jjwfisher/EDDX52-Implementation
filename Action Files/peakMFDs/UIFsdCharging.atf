@@ -1,0 +1,11 @@
+PROGRAM UIFsdCharging
+
+If EventClass_Charging IsTrue
+    DLLCall EDDX52, advSetLED, 14, 1, 1, 0.5, 0.5, 0
+    DLLCall EDDX52, setString, 0, "FSD Charging", ID_MODE
+    Sleep 3000
+    Call Landing_Mode
+Else 
+    Break 
+
+END PROGRAM

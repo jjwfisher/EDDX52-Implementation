@@ -1,0 +1,8 @@
+PROGRAM DockingGranted
+
+DLLCall EDDX52, setString, 0, "Docking Granted", ID_DOCKGRANT
+DLLCall EDDX52, setString, 1, "Dock at Pad %(EventClass_LandingPad)", ID_PADNUM
+Sleep 5000
+Call Landing_Mode
+
+END PROGRAM
