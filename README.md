@@ -14,7 +14,7 @@
  ## Please feel free to open a GitHub issue on this repo to request new features! 
  (in addition to reporting bugs, of course)
  
- ## This is currently very much a work in progress, and there are some bugs/broken features.
+ ## This is currently very much a work in progress, and there are some bugs/broken features. (This has NOT been upgraded/tested for Odyssey, I do plan to do this soon™)
 However, a summary of the current functionality is given below:
  
  #### For all of these features, anything written inside a pair of square brackets [], indicates that this is based on who is using the plugin. For example, on my system, "Welcome [CMDR Name]" will display as "Welcome CMDR EarthFishy"
