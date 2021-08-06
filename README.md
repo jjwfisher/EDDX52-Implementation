@@ -23,8 +23,8 @@ However, a summary of the current functionality is given below:
  - Upon EDD boot, the LEDs will all turn off, and the MFD (LCD display on the throttle) will display: "Welcome, [CMDR Name]". After a 4 second pause, the MFD will display: "Waiting for ED Boot..."
 
 - Upon loading the main game (into Solo, Private or Open play), the following is programmed:
- - LEDs: The LEDs will all simulaneously flash RED, AMBER, and GREEN colours, for 1 second each.
- - MFD: The MFD will initially display "Systems booting, please wait". After 1 second, it will display "Systems booting, loading..." whereby each dot is added after a 1 second pause, to give the impression of a loading screen (when in reality the MFD is being overwritten each time). Finally, roughly when the game has loaded (depending on how fast your game loads), the MFD will display "Welcome, [CMDR NAME]" in addition to "SHIP: [Ship Name], [Ship Ident]" which will be on the bottom line of the MFD. [Ship Ident] is the 3 letter/number long code you can give your ship in the Livery screen. 
+    - LEDs: The LEDs will all simulaneously flash RED, AMBER, and GREEN colours, for 1 second each.
+    - MFD: The MFD will initially display "Systems booting, please wait". After 1 second, it will display "Systems booting, loading..." whereby each dot is added after a 1 second pause, to give the impression of a loading screen (when in reality the MFD is being overwritten each time). Finally, roughly when the game has loaded (depending on how fast your game loads), the MFD will display "Welcome, [CMDR NAME]" in addition to "SHIP: [Ship Name], [Ship Ident]" which will be on the bottom line of the MFD. [Ship Ident] is the 3 letter/number long code you can give your ship in the Livery screen. 
 
 ### Rest to be added
 
