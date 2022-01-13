@@ -5,7 +5,7 @@
  - EDD (Elite Dangerous Discovery) is the tool used to create and program the Action files, which execute DLL calls based on in-game or external events.
  EDDcan be found here: https://github.com/EDDiscovery/EDDiscovery/
  
- - EDDX52 is a DLL made for interfacing EDDiscovery with the Saitek/Logitech x52 Pro joystick. This DLL and instructions for programming it can be found here: https://github.com/wulkanat/EDDX52/
+ - EDDX52 is a DLL made for interfacing EDDiscovery with the Saitek/Logitech x52 Pro joystick. This DLL and instructions for programming it can be found here: https://github.com/Theaninova/EDDX52
  
  This repo is a collection of the files I have created using the two above tools, to program my joystick to respond to certain ingame events.
  #### This should work for any CMDR using these files, as the CMDR name/system info/ship info displayed on the MFD is information gained from EDD, via the game - so it does not need manually programming in. 
