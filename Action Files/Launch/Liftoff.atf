@@ -1,4 +1,4 @@
-PROGRAM Undocked
+PROGRAM Liftoff
 
 DLLCall EDDX52, resetMFD
 DLLCall EDDX52, setString, 0, "Engines at 100%", ID_ENG
