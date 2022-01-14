@@ -1,0 +1,22 @@
+Global's
+
+gearState [Down/Up]
+
+mainState:
+- None
+- NormalSpace
+- Superluminal
+- Multicrew
+- Taxi
+- Fighter
+- SRV
+- OnFoot
+
+
+ActFiles that overwrite states:
+- Launch
+- Dock/Touchdown
+- Cockpit Blowout
+- Boot
+- FSD Charging
+- Docking Granted/Denied/Cancelled
