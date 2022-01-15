@@ -1,0 +1,12 @@
+PROGRAM Hardpoint_State
+
+If EventClass_Deployed IsTrue
+    Global HPState = 1
+    Break 
+ElseIf EventClass_Deployed IsFalse
+    Global HPState = 0
+    Break 
+Else 
+    Break 
+
+END PROGRAM

@@ -1,9 +1,0 @@
-PROGRAM Touchdown
-
-DLLCall EDDX52, resetMFD
-Call Landing_Mode(gearState=Down)
-DLLCall EDDX52, setString, 0, Touchdown, ID_DOCKWELC
-DLLCall EDDX52, setString, 1, %(EventClass_Body), ID_STATIONNAME
-DLLCall EDDX52, setString, 2, "Coords: %(EventClass_Latitude), %(EventClass_Longitude)", ID_CMDR
-
-END PROGRAM

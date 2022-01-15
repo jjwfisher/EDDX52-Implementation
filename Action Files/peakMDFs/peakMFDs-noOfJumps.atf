@@ -1,0 +1,8 @@
+PROGRAM noOfJumps
+
+Let EventClass_RouteCount = (%(EventClass_RouteCount) - 1)
+DLLCall EDDX52, setString, 1, "Jmps: %(EventClass_RouteCount)", ID_JUMPS
+Sleep 10000
+DLLCall EDDX52, setString, 1, "CMDR %(Commander)", ID_CMDR
+
+END PROGRAM

@@ -1,0 +1,24 @@
+PROGRAM StickMode
+
+If mainState $== Taxi Or mainState $== Multicrew Or mainState $== Fighter
+    Call setGreen
+    DLLCall EDDX52, setString, 0, %(mainState), ID_MODE
+ElseIf mainState $== SRV Or mainState $== OnFoot
+    Call setYellow
+    DLLCall EDDX52, setString, 0, %(mainState), ID_MODE
+ElseIf gearState IsTrue
+    Call setYellow
+    DLLCall EDDX52, setString, 0, "Gear Down", ID_MODE
+ElseIf HPState IsTrue
+    Call setRed
+    DLLCall EDDX52, setString, 0, "HrdPnts Deployed", ID_MODE
+ElseIf mainState $== normalSpace And HPState IsFalse And gearState IsFalse
+    Call setGreen
+    DLLCall EDDX52, setString, 0, Subluminal, ID_MODE
+ElseIf mainState $== superluminal And HPState IsFalse And gearState IsFalse
+    Call setGreen
+    DLLCall EDDX52, setString, 0, Superluminal, ID_MODE
+Else 
+    DLLCall EDDX52, setString, 0, "MODE ERR", ID_MODE
+
+END PROGRAM

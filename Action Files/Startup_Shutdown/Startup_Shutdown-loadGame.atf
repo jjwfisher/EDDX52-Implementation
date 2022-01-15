@@ -1,0 +1,25 @@
+PROGRAM loadGame
+
+Call getCurrentShip_loadGame(EventClass_ShipName="%(EventClass_ShipName)",EventClass_ShipIdent="%(EventClass_ShipIdent)")
+DLLCall EDDX52, resetMFD
+DLLCall EDDX52, setString, 0, "Systems booting", ID_SYS
+DLLCall EDDX52, setString, 1, "Please wait", ID_SYS
+Call setRed
+Sleep 1000
+Call setYellow
+Sleep 1000
+Call setGreen
+Sleep 1000
+DLLCall EDDX52, setString, 1, "loading.", ID_SYS
+Sleep 1000
+DLLCall EDDX52, setString, 1, "loading..", ID_SYS
+Sleep 1000
+DLLCall EDDX52, setString, 1, "loading...", ID_SYS
+Sleep 1000
+DLLCall EDDX52, setString, 0, "Welcome,", ID_WELC
+DLLCall EDDX52, setString, 1, "CMDR %(Commander)", ID_CMDR
+DLLCall EDDX52, setString, 2, "SHIP: %(CurrentShip_Name), %(CurrentShip_Ident)", ID_SHIP
+Sleep 1000
+Global gameReady = 1
+
+END PROGRAM

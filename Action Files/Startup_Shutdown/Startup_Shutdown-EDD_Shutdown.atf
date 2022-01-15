@@ -1,0 +1,5 @@
+PROGRAM EDD_Shutdown
+
+Global gameReady = 0
+
+END PROGRAM

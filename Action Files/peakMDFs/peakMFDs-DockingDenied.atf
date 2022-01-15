@@ -1,0 +1,9 @@
+PROGRAM DockingDenied
+
+DLLCall EDDX52, setString, 0, "Docking Denied", ID_DOCKNO
+DLLCall EDDX52, setString, 1, "Reason: %(EventClass_Reason)", ID_DOCKNO_REASON
+Sleep 5000
+DLLCall EDDX52, setString, 1, "CMDR %(Commander)", ID_CMDR
+Call Landing_Mode
+
+END PROGRAM

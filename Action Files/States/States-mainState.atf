@@ -1,0 +1,15 @@
+PROGRAM mainState
+
+If EventClass_MajorMode IsOneOf Taxi,Multicrew,SRV,Fighter,OnFoot
+    Global mainState = %(EventClass_MajorMode)
+ElseIf EventClass_Mode $== MainShipSupercruise
+    Global mainState = superluminal
+ElseIf EventClass_Mode $== MainShipNormalSpace
+    Global mainState = normalSpace
+ElseIf EventClass_Mode IsOneOf MainShipDockedStarPort,MainShipDockedPlanet,MainShipLanded
+    Global mainState = landed
+Else 
+    Global mainState = None/Err
+Print %(mainState)
+
+END PROGRAM

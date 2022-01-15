@@ -1,0 +1,90 @@
+﻿ACTIONFILE V4
+
+ENABLED True
+
+EVENT onRefreshEnd, loadEDD, "", Condition AlwaysTrue
+EVENT LoadGame, loadGame, "", Condition AlwaysTrue
+EVENT Shutdown, Shutdown, "", Condition AlwaysTrue
+EVENT onShutdown, EDD_Shutdown, "", Condition AlwaysTrue
+
+//*************************************************************
+// loadEDD
+// Events: onRefreshEnd
+//*************************************************************
+PROGRAM loadEDD
+
+Print Welcome, CMDR %(Commander)!
+DLLCall EDDX52, resetMFD
+DLLCall EDDX52, setString, 0, "Welcome, ", ID_WELC
+DLLCall EDDX52, setString, 1, "CMDR %(Commander)", ID_CMDR
+Sleep 4000
+DLLCall EDDX52, setString, 0, "Waiting for", ID_EDBOOT
+DLLCall EDDX52, setString, 1, "ED Boot...", ID_EDBOOT
+
+END PROGRAM
+
+//*************************************************************
+// loadGame
+// Events: LoadGame
+//*************************************************************
+PROGRAM loadGame
+
+Call getCurrentShip_loadGame(EventClass_ShipName="%(EventClass_ShipName)",EventClass_ShipIdent="%(EventClass_ShipIdent)")
+DLLCall EDDX52, resetMFD
+DLLCall EDDX52, setString, 0, "Systems booting", ID_SYS
+DLLCall EDDX52, setString, 1, "Please wait", ID_SYS
+Call setRed
+Sleep 1000
+Call setYellow
+Sleep 1000
+Call setGreen
+Sleep 1000
+DLLCall EDDX52, setString, 1, "loading.", ID_SYS
+Sleep 1000
+DLLCall EDDX52, setString, 1, "loading..", ID_SYS
+Sleep 1000
+DLLCall EDDX52, setString, 1, "loading...", ID_SYS
+Sleep 1000
+DLLCall EDDX52, setString, 0, "Welcome,", ID_WELC
+DLLCall EDDX52, setString, 1, "CMDR %(Commander)", ID_CMDR
+DLLCall EDDX52, setString, 2, "SHIP: %(CurrentShip_Name), %(CurrentShip_Ident)", ID_SHIP
+Sleep 1000
+Global gameReady = 1
+
+END PROGRAM
+
+//*************************************************************
+// Shutdown
+// Events: Shutdown
+//*************************************************************
+PROGRAM Shutdown
+
+Global gameReady = 0
+DLLCall EDDX52, resetMFD
+DLLCall EDDX52, setLED, FIRE, OFF
+DLLCall EDDX52, setLED, FIRE_A, OFF
+DLLCall EDDX52, setLED, FIRE_B, OFF
+DLLCall EDDX52, setLED, FIRE_D, OFF
+DLLCall EDDX52, setLED, FIRE_E, OFF
+DLLCall EDDX52, setLED, TOGGLE_1_2, OFF
+DLLCall EDDX52, setLED, TOGGLE_3_4, OFF
+DLLCall EDDX52, setLED, TOGGLE_5_6, OFF
+DLLCall EDDX52, setLED, CLUTCH, OFF
+DLLCall EDDX52, setLED, POV_2, OFF
+DLLCall EDDX52, advSetLED, 19, 1
+DLLCall EDDX52, setString, 0, "Goodbye CMDR", ID_GBYE
+DLLCall EDDX52, setString, 1, "%(Commander)", ID_CMDR
+DLLCall EDDX52, setString, 2, "Fly safe. o7", ID_SALUTE
+
+END PROGRAM
+
+//*************************************************************
+// EDD_Shutdown
+// Events: onShutdown
+//*************************************************************
+PROGRAM EDD_Shutdown
+
+Global gameReady = 0
+
+END PROGRAM
+

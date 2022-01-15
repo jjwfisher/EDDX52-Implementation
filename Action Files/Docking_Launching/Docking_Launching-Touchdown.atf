@@ -1,0 +1,15 @@
+PROGRAM Touchdown
+
+DLLCall EDDX52, resetMFD
+Call Landing_Mode(gearState=Down)
+DLLCall EDDX52, setString, 0, "Engines at 0%.", ID_DOCKWELC
+DLLCall EDDX52, setString, 1, "You may now", ID_DOCKWELC
+DLLCall EDDX52, setString, 2, "disembark.", ID_DOCKWELC
+Sleep 4500
+DLLCall EDDX52, setString, 0, "Landed At:", ID_DOCKWELC
+DLLCall EDDX52, setString, 1, "%(EventClass_Latitude)° N", ID_LAT
+DLLCall EDDX52, setString, 2, "%(EventClass_Longitude)° W", ID_LONG
+Sleep 5000
+DLLCall EDDX52, setString, 0, %(EventClass_Body), ID_BODYNAME
+
+END PROGRAM

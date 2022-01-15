@@ -1,0 +1,20 @@
+PROGRAM Shutdown
+
+Global gameReady = 0
+DLLCall EDDX52, resetMFD
+DLLCall EDDX52, setLED, FIRE, OFF
+DLLCall EDDX52, setLED, FIRE_A, OFF
+DLLCall EDDX52, setLED, FIRE_B, OFF
+DLLCall EDDX52, setLED, FIRE_D, OFF
+DLLCall EDDX52, setLED, FIRE_E, OFF
+DLLCall EDDX52, setLED, TOGGLE_1_2, OFF
+DLLCall EDDX52, setLED, TOGGLE_3_4, OFF
+DLLCall EDDX52, setLED, TOGGLE_5_6, OFF
+DLLCall EDDX52, setLED, CLUTCH, OFF
+DLLCall EDDX52, setLED, POV_2, OFF
+DLLCall EDDX52, advSetLED, 19, 1
+DLLCall EDDX52, setString, 0, "Goodbye CMDR", ID_GBYE
+DLLCall EDDX52, setString, 1, "%(Commander)", ID_CMDR
+DLLCall EDDX52, setString, 2, "Fly safe. o7", ID_SALUTE
+
+END PROGRAM

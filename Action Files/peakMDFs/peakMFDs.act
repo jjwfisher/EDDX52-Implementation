@@ -1,0 +1,80 @@
+﻿ACTIONFILE V4
+
+ENABLED True
+
+EVENT UIFsdCharging, UIFsdCharging, "", Condition AlwaysTrue
+EVENT NavRoute, noOfJumps, "", Condition AlwaysTrue
+EVENT DockingGranted, DockingGranted, "", Condition AlwaysTrue
+EVENT DockingDenied, DockingDenied, "", Condition AlwaysTrue
+EVENT DockingCancelled, DockingCancelled, "", Condition AlwaysTrue
+
+//*************************************************************
+// DockingGranted
+// Events: DockingGranted
+//*************************************************************
+PROGRAM DockingGranted
+
+DLLCall EDDX52, setString, 0, "Docking Granted", ID_DOCKGRANT
+DLLCall EDDX52, setString, 1, "Dock at Pad %(EventClass_LandingPad)", ID_PADNUM
+Sleep 5000
+Call Landing_Mode
+
+END PROGRAM
+
+//*************************************************************
+// UIFsdCharging
+// Events: UIFsdCharging
+//*************************************************************
+PROGRAM UIFsdCharging
+
+If EventClass_Charging IsTrue
+    DLLCall EDDX52, advSetLED, 14, 1, 1, 0.5, 0.5, 0
+    DLLCall EDDX52, setString, 0, "FSD Charging", ID_MODE
+    Sleep 3000
+    Call Landing_Mode
+Else 
+    Break 
+
+END PROGRAM
+
+//*************************************************************
+// noOfJumps
+// Events: NavRoute
+//*************************************************************
+PROGRAM noOfJumps
+
+Let EventClass_RouteCount = (%(EventClass_RouteCount) - 1)
+DLLCall EDDX52, setString, 1, "Jmps: %(EventClass_RouteCount)", ID_JUMPS
+Sleep 10000
+DLLCall EDDX52, setString, 1, "CMDR %(Commander)", ID_CMDR
+
+END PROGRAM
+
+//*************************************************************
+// DockingDenied
+// Events: DockingDenied
+//*************************************************************
+PROGRAM DockingDenied
+
+DLLCall EDDX52, setString, 0, "Docking Denied", ID_DOCKNO
+DLLCall EDDX52, setString, 1, "Reason: %(EventClass_Reason)", ID_DOCKNO_REASON
+Sleep 5000
+DLLCall EDDX52, setString, 1, "CMDR %(Commander)", ID_CMDR
+Call Landing_Mode
+
+END PROGRAM
+
+//*************************************************************
+// DockingCancelled
+// Events: DockingCancelled
+//*************************************************************
+PROGRAM DockingCancelled
+
+DLLCall EDDX52, setString, 0, "Docking Cancel", ID_DOCKCANCEL
+DLLCall EDDX52, setString, 1, "Exit station", ID_PADNUM
+Sleep 5000
+Call Landing_Mode
+DLLCall EDDX52, setString, 1, "CMDR %(Commander)", ID_CMDR
+
+END PROGRAM
+

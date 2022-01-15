@@ -1,5 +1,0 @@
-PROGRAM resetStick
-
-DLLCall EDDX52, reset
-
-END PROGRAM

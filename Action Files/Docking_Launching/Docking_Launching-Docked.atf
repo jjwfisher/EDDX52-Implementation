@@ -1,0 +1,9 @@
+PROGRAM Docked
+
+DLLCall EDDX52, resetMFD
+Call Landing_Mode(gearState=Down)
+DLLCall EDDX52, setString, 0, "Welcome to", ID_DOCKWELC
+DLLCall EDDX52, setString, 1, %(EventClass_StationName), ID_STATIONNAME
+DLLCall EDDX52, setString, 2, "CMDR %(Commander)", ID_CMDR
+
+END PROGRAM

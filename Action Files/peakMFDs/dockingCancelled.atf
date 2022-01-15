@@ -1,8 +1,0 @@
-PROGRAM DockingCancelled
-
-DLLCall EDDX52, setString, 0, "Docking Cancel", ID_DOCKCANCEL
-DLLCall EDDX52, setString, 1, "Exit station", ID_PADNUM
-Sleep 5000
-Call Landing_Mode
-DLLCall EDDX52, setString, 1, "CMDR %(Commander)", ID_CMDR
-END PROGRAM

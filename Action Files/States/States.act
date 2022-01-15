@@ -1,0 +1,199 @@
+﻿ACTIONFILE V4
+
+ENABLED True
+
+GROUP getCurrentShip
+EVENT LoadGame, getCurrentShip_loadGame, "", Condition AlwaysTrue
+EVENT Loadout, getCurrentShip_loadout, "", Condition AlwaysTrue
+EVENT SetUserShipName, getCurrentShip_NewName, "", Condition AlwaysTrue
+
+GROUP UIStates
+EVENT UIHardpointsDeployed, Hardpoint_State, "", Condition AlwaysTrue
+EVENT UILandingGear, Landing_State, "", Condition AlwaysTrue
+EVENT UIOverallStatus, mainState, "", Condition AlwaysTrue
+
+GROUP JoyStates
+EVENT All, setRed, "", Condition AlwaysFalse
+EVENT All, setGreen, "", Condition AlwaysFalse
+EVENT All, setYellow, "", Condition AlwaysFalse
+EVENT All, StickMode, "", gameReady IsTrue
+
+//*************************************************************
+// getCurrentShip_loadGame
+// Events: LoadGame
+//*************************************************************
+PROGRAM getCurrentShip_loadGame
+
+Global CurrentShip_Name = %(EventClass_ShipName)
+Global CurrentShip_Ident = %(EventClass_ShipIdent)
+Print Set ship to: %(CurrentShip_Name), %(CurrentShip_Ident)
+
+END PROGRAM
+
+//*************************************************************
+// getCurrentShip_loadout
+// Events: Loadout
+//*************************************************************
+PROGRAM getCurrentShip_loadout
+
+Global CurrentShip_Name = %(EventClass_ShipName)
+Global CurrentShip_Ident = %(EventClass_ShipIdent)
+Print Set ship to: %(CurrentShip_Name), %(CurrentShip_Ident)
+
+END PROGRAM
+
+//*************************************************************
+// getCurrentShip_NewName
+// Events: SetUserShipName
+//*************************************************************
+PROGRAM getCurrentShip_NewName
+
+Global CurrentShip_Name = %(EventClass_ShipName)
+Global CurrentShip_Ident = %(EventClass_ShipIdent)
+Print Set ship to: %(CurrentShip_Name), %(CurrentShip_Ident)
+
+END PROGRAM
+
+//*************************************************************
+// Hardpoint_State
+// Events: UIHardpointsDeployed
+//*************************************************************
+PROGRAM Hardpoint_State
+
+If EventClass_Deployed IsTrue
+    Global HPState = 1
+    Break 
+ElseIf EventClass_Deployed IsFalse
+    Global HPState = 0
+    Break 
+Else 
+    Break 
+
+END PROGRAM
+
+//*************************************************************
+// Landing_State
+// Events: UILandingGear
+//*************************************************************
+PROGRAM Landing_State
+
+If EventClass_Gear IsTrue
+    Global gearState = 1
+    Break 
+ElseIf EventClass_Gear IsFalse
+    Global gearState = 0
+    Break 
+Else 
+    Break 
+
+END PROGRAM
+
+//*************************************************************
+// mainState
+// Events: UIOverallStatus
+//*************************************************************
+PROGRAM mainState
+
+If EventClass_MajorMode IsOneOf Taxi,Multicrew,SRV,Fighter,OnFoot
+    Global mainState = %(EventClass_MajorMode)
+ElseIf EventClass_Mode $== MainShipSupercruise
+    Global mainState = superluminal
+ElseIf EventClass_Mode $== MainShipNormalSpace
+    Global mainState = normalSpace
+ElseIf EventClass_Mode IsOneOf MainShipDockedStarPort,MainShipDockedPlanet,MainShipLanded
+    Global mainState = landed
+Else 
+    Global mainState = None/Err
+Print %(mainState)
+
+END PROGRAM
+
+//*************************************************************
+// setRed
+// Events: All?(Condition AlwaysFalse)
+//*************************************************************
+PROGRAM setRed
+
+DLLCall EDDX52, setLED, FIRE, ON
+DLLCall EDDX52, setLED, FIRE_A, RED
+DLLCall EDDX52, setLED, FIRE_B, RED
+DLLCall EDDX52, setLED, FIRE_D, RED
+DLLCall EDDX52, setLED, FIRE_E, RED
+DLLCall EDDX52, setLED, TOGGLE_1_2, RED
+DLLCall EDDX52, setLED, TOGGLE_3_4, RED
+DLLCall EDDX52, setLED, TOGGLE_5_6, RED
+DLLCall EDDX52, setLED, CLUTCH, RED
+DLLCall EDDX52, setLED, POV_2, RED
+DLLCall EDDX52, advSetLED, 19, 1
+
+END PROGRAM
+
+//*************************************************************
+// setGreen
+// Events: All?(Condition AlwaysFalse)
+//*************************************************************
+PROGRAM setGreen
+
+DLLCall EDDX52, setLED, FIRE, ON
+DLLCall EDDX52, setLED, FIRE_A, GREEN
+DLLCall EDDX52, setLED, FIRE_B, GREEN
+DLLCall EDDX52, setLED, FIRE_D, GREEN
+DLLCall EDDX52, setLED, FIRE_E, GREEN
+DLLCall EDDX52, setLED, TOGGLE_1_2, GREEN
+DLLCall EDDX52, setLED, TOGGLE_3_4, GREEN
+DLLCall EDDX52, setLED, TOGGLE_5_6, GREEN
+DLLCall EDDX52, setLED, CLUTCH, GREEN
+DLLCall EDDX52, setLED, POV_2, GREEN
+DLLCall EDDX52, advSetLED, 19, 1
+
+END PROGRAM
+
+//*************************************************************
+// setYellow
+// Events: All?(Condition AlwaysFalse)
+//*************************************************************
+PROGRAM setYellow
+
+DLLCall EDDX52, setLED, FIRE, ON
+DLLCall EDDX52, setLED, FIRE_A, YELLOW
+DLLCall EDDX52, setLED, FIRE_B, YELLOW
+DLLCall EDDX52, setLED, FIRE_D, YELLOW
+DLLCall EDDX52, setLED, FIRE_E, YELLOW
+DLLCall EDDX52, setLED, TOGGLE_1_2, YELLOW
+DLLCall EDDX52, setLED, TOGGLE_3_4, YELLOW
+DLLCall EDDX52, setLED, TOGGLE_5_6, YELLOW
+DLLCall EDDX52, setLED, CLUTCH, YELLOW
+DLLCall EDDX52, setLED, POV_2, YELLOW
+DLLCall EDDX52, advSetLED, 19, 1
+
+END PROGRAM
+
+//*************************************************************
+// StickMode
+// Events: All?(gameReady IsTrue)
+//*************************************************************
+PROGRAM StickMode
+
+If mainState $== Taxi Or mainState $== Multicrew Or mainState $== Fighter
+    Call setGreen
+    DLLCall EDDX52, setString, 0, %(mainState), ID_MODE
+ElseIf mainState $== SRV Or mainState $== OnFoot
+    Call setYellow
+    DLLCall EDDX52, setString, 0, %(mainState), ID_MODE
+ElseIf gearState IsTrue
+    Call setYellow
+    DLLCall EDDX52, setString, 0, "Gear Down", ID_MODE
+ElseIf HPState IsTrue
+    Call setRed
+    DLLCall EDDX52, setString, 0, "HrdPnts Deployed", ID_MODE
+ElseIf mainState $== normalSpace And HPState IsFalse And gearState IsFalse
+    Call setGreen
+    DLLCall EDDX52, setString, 0, Subluminal, ID_MODE
+ElseIf mainState $== superluminal And HPState IsFalse And gearState IsFalse
+    Call setGreen
+    DLLCall EDDX52, setString, 0, Superluminal, ID_MODE
+Else 
+    DLLCall EDDX52, setString, 0, "MODE ERR", ID_MODE
+
+END PROGRAM
+

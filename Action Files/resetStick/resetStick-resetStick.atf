@@ -1,0 +1,7 @@
+PROGRAM resetStick
+
+DLLCall EDDX52, reset
+DLLCall EDDX52, setString, 0, "LEDs and MFD", ID_RESET
+DLLCall EDDX52, setString, 1, "reset successful", ID_RESET
+
+END PROGRAM

@@ -1,0 +1,71 @@
+﻿ACTIONFILE V4
+
+ENABLED True
+
+EVENT DockFighter, DockFighter, "", Condition AlwaysTrue
+EVENT DockSRV, DockSRV, "", Condition AlwaysTrue
+EVENT Embark, Embark, "", Condition AlwaysTrue
+EVENT LaunchSRV, LaunchSRV, "", Condition AlwaysTrue
+EVENT LaunchFighter, LaunchFighter, "", Condition AlwaysTrue
+EVENT Disembark, Disembark, "", Condition AlwaysTrue
+
+//*************************************************************
+// DockFighter
+// Events: DockFighter
+//*************************************************************
+PROGRAM DockFighter
+
+// 
+
+END PROGRAM
+
+//*************************************************************
+// DockSRV
+// Events: DockSRV
+//*************************************************************
+PROGRAM DockSRV
+
+// 
+
+END PROGRAM
+
+//*************************************************************
+// Embark
+// Events: Embark
+//*************************************************************
+PROGRAM Embark
+
+// 
+
+END PROGRAM
+
+//*************************************************************
+// LaunchSRV
+// Events: LaunchSRV
+//*************************************************************
+PROGRAM LaunchSRV
+
+// 
+
+END PROGRAM
+
+//*************************************************************
+// LaunchFighter
+// Events: LaunchFighter
+//*************************************************************
+PROGRAM LaunchFighter
+
+// 
+
+END PROGRAM
+
+//*************************************************************
+// Disembark
+// Events: Disembark
+//*************************************************************
+PROGRAM Disembark
+
+// 
+
+END PROGRAM
+

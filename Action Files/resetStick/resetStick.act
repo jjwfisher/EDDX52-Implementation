@@ -5,21 +5,14 @@ ENABLED True
 EVENT onKeyPress, resetStick, "", KeyPress $== Ctrl+PageUp
 
 //*************************************************************
-// onKeyPress
-//*************************************************************
-PROGRAM onKeyPress
-
-DLLCall EDDX52, reset
-
-END PROGRAM
-
-//*************************************************************
 // resetStick
 // Events: onKeyPress?(KeyPress $== Ctrl+PageUp)
 //*************************************************************
 PROGRAM resetStick
 
 DLLCall EDDX52, reset
+DLLCall EDDX52, setString, 0, "LEDs and MFD", ID_RESET
+DLLCall EDDX52, setString, 1, "reset successful", ID_RESET
 
 END PROGRAM
 

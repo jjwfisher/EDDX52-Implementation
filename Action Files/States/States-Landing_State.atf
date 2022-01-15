@@ -1,0 +1,12 @@
+PROGRAM Landing_State
+
+If EventClass_Gear IsTrue
+    Global gearState = 1
+    Break 
+ElseIf EventClass_Gear IsFalse
+    Global gearState = 0
+    Break 
+Else 
+    Break 
+
+END PROGRAM

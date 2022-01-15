@@ -1,0 +1,79 @@
+﻿ACTIONFILE V4
+
+ENABLED True
+
+EVENT Docked, Docked, "", Condition AlwaysTrue
+EVENT Touchdown, Touchdown, "", Condition AlwaysTrue
+EVENT Undocked, Undocked, "", Condition AlwaysTrue
+EVENT Liftoff, Liftoff, "", Condition AlwaysTrue
+
+//*************************************************************
+// Docked
+// Events: Docked
+//*************************************************************
+PROGRAM Docked
+
+DLLCall EDDX52, resetMFD
+Call Landing_Mode(gearState=Down)
+DLLCall EDDX52, setString, 0, "Welcome to", ID_DOCKWELC
+DLLCall EDDX52, setString, 1, %(EventClass_StationName), ID_STATIONNAME
+DLLCall EDDX52, setString, 2, "CMDR %(Commander)", ID_CMDR
+
+END PROGRAM
+
+//*************************************************************
+// Touchdown
+// Events: Touchdown
+//*************************************************************
+PROGRAM Touchdown
+
+DLLCall EDDX52, resetMFD
+Call Landing_Mode(gearState=Down)
+DLLCall EDDX52, setString, 0, "Engines at 0%.", ID_DOCKWELC
+DLLCall EDDX52, setString, 1, "You may now", ID_DOCKWELC
+DLLCall EDDX52, setString, 2, "disembark.", ID_DOCKWELC
+Sleep 4500
+DLLCall EDDX52, setString, 0, "Landed At:", ID_DOCKWELC
+DLLCall EDDX52, setString, 1, "%(EventClass_Latitude)° N", ID_LAT
+DLLCall EDDX52, setString, 2, "%(EventClass_Longitude)° W", ID_LONG
+Sleep 5000
+DLLCall EDDX52, setString, 0, %(EventClass_Body), ID_BODYNAME
+
+END PROGRAM
+
+//*************************************************************
+// Undocked
+// Events: Undocked
+//*************************************************************
+PROGRAM Undocked
+
+DLLCall EDDX52, resetMFD
+DLLCall EDDX52, setString, 0, "Engines at 100%", ID_ENG
+DLLCall EDDX52, setString, 1, "Clear to liftoff", ID_LIFTOFF
+DLLCall EDDX52, setString, 2, "CMDR %(Commander)", ID_CMDR
+Sleep 5000
+DLLCall EDDX52, setString, 0, Landing, ID_MODE
+DLLCall EDDX52, setString, 1, "CMDR %(Commander)", ID_CMDR
+DLLCall EDDX52, setString, 2, "%(CurrentShip_Name), %(CurrentShip_Ident)", ID_SHIP
+Call Landing_Mode(gearState=Down)
+
+END PROGRAM
+
+//*************************************************************
+// Liftoff
+// Events: Liftoff
+//*************************************************************
+PROGRAM Liftoff
+
+DLLCall EDDX52, resetMFD
+DLLCall EDDX52, setString, 0, "Engines at 100%", ID_ENG
+DLLCall EDDX52, setString, 1, "Clear to liftoff", ID_LIFTOFF
+DLLCall EDDX52, setString, 2, "CMDR %(Commander)", ID_CMDR
+Sleep 5000
+DLLCall EDDX52, setString, 0, Landing, ID_MODE
+DLLCall EDDX52, setString, 1, "CMDR %(Commander)", ID_CMDR
+DLLCall EDDX52, setString, 2, "%(CurrentShip_Name), %(CurrentShip_Ident)", ID_SHIP
+Call Landing_Mode(gearState=Down)
+
+END PROGRAM
+
