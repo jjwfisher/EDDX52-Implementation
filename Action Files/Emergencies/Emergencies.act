@@ -13,29 +13,28 @@ PROGRAM CockpitBreached
 DLLCall EDDX52, setString, 0, "CANOPY BREACH.", ID_CANOP
 DLLCall EDDX52, setString, 1, "ALERT. CANOPY", ID_CANOP
 DLLCall EDDX52, setString, 2, "BREACHED. ALERT.", ID_CANOP
-DLLCall EDDX52, advSetLED, 0, 1, 3, 1, 0.1, 0.25
-DLLCall EDDX52, advSetLED, 1, 1, 3, 1, 0.1, 0.25
-DLLCall EDDX52, advSetLED, 2, 1, 3, 1, 0.1, 0.25
-DLLCall EDDX52, advSetLED, 3, 1, 3, 1, 0.1, 0.25
-DLLCall EDDX52, advSetLED, 4, 1, 3, 1, 0.1, 0.25
-DLLCall EDDX52, advSetLED, 5, 1, 3, 1, 0.1, 0.25
-DLLCall EDDX52, advSetLED, 6, 1, 3, 1, 0.1, 0.25
-DLLCall EDDX52, advSetLED, 7, 1, 3, 1, 0.1, 0.25
-DLLCall EDDX52, advSetLED, 8, 1, 3, 1, 0.1, 0.25
-DLLCall EDDX52, advSetLED, 9, 1, 3, 1, 0.1, 0.25
-DLLCall EDDX52, advSetLED, 10, 1, 3, 1, 0.1, 0.25
-DLLCall EDDX52, advSetLED, 11, 1, 3, 1, 0.1, 0.25
-DLLCall EDDX52, advSetLED, 12, 1, 3, 1, 0.1, 0.25
-DLLCall EDDX52, advSetLED, 13, 1, 3, 1, 0.1, 0.25
-DLLCall EDDX52, advSetLED, 14, 1, 3, 1, 0.1, 0.25
-DLLCall EDDX52, advSetLED, 15, 1, 3, 1, 0.1, 0.25
-DLLCall EDDX52, advSetLED, 16, 1, 3, 1, 0.1, 0.25
-DLLCall EDDX52, advSetLED, 17, 1, 3, 1, 0.1, 0.25
-DLLCall EDDX52, advSetLED, 18, 1, 3, 1, 0.1, 0.25
+DLLCall EDDX52, advSetLED, 0, 1, 1, 1, 1, 1
+DLLCall EDDX52, advSetLED, 1, 1, 1, 1, 1, 1
+DLLCall EDDX52, advSetLED, 2, 1, 1, 1, 1, 1
+DLLCall EDDX52, advSetLED, 3, 1, 1, 1, 1, 1
+DLLCall EDDX52, advSetLED, 4, 1, 1, 1, 1, 1
+DLLCall EDDX52, advSetLED, 5, 1, 1, 1, 1, 1
+DLLCall EDDX52, advSetLED, 6, 1, 1, 1, 1, 1
+DLLCall EDDX52, advSetLED, 7, 1, 1, 1, 1, 1
+DLLCall EDDX52, advSetLED, 8, 1, 1, 1, 1, 1
+DLLCall EDDX52, advSetLED, 9, 1, 1, 1, 1, 1
+DLLCall EDDX52, advSetLED, 10, 1, 1, 1, 1, 1
+DLLCall EDDX52, advSetLED, 11, 1, 1, 1, 1, 1
+DLLCall EDDX52, advSetLED, 12, 1, 1, 1, 1, 1
+DLLCall EDDX52, advSetLED, 13, 1, 1, 1, 1, 1
+DLLCall EDDX52, advSetLED, 14, 1, 1, 1, 1, 1
+DLLCall EDDX52, advSetLED, 15, 1, 1, 1, 1, 1
+DLLCall EDDX52, advSetLED, 16, 1, 1, 1, 1, 1
+DLLCall EDDX52, advSetLED, 17, 1, 1, 1, 1, 1
+DLLCall EDDX52, advSetLED, 18, 1, 1, 1, 1, 1
 DLLCall EDDX52, syncFlashPatterns
 Sleep 15000
-Call Hardpoints
-Call Landing_Mode
+DLLCall EDDX52, resetMFD
 DLLCall EDDX52, setString, 1, "CMDR %(Commander)", ID_CMDR
 DLLCall EDDX52, setString, 2, "SHIP: %(CurrentShip_Name), %(CurrentShip_Ident)", ID_SHIP
 

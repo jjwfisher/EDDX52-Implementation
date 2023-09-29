@@ -35,7 +35,7 @@ END PROGRAM
 //*************************************************************
 PROGRAM Embark
 
-// 
+Pragma DumpVars *
 
 END PROGRAM
 
@@ -65,7 +65,7 @@ END PROGRAM
 //*************************************************************
 PROGRAM Disembark
 
-// 
+DLLCall EDDX52, setString, 2, %(currentSuit), ID_SUIT
 
 END PROGRAM
 

@@ -50,6 +50,7 @@ DLLCall EDDX52, setString, 1, "CMDR %(Commander)", ID_CMDR
 DLLCall EDDX52, setString, 2, "SHIP: %(CurrentShip_Name), %(CurrentShip_Ident)", ID_SHIP
 Sleep 1000
 Global gameReady = 1
+Call StickMode
 
 END PROGRAM
 

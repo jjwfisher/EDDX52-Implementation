@@ -7,6 +7,14 @@ EVENT LoadGame, getCurrentShip_loadGame, "", Condition AlwaysTrue
 EVENT Loadout, getCurrentShip_loadout, "", Condition AlwaysTrue
 EVENT SetUserShipName, getCurrentShip_NewName, "", Condition AlwaysTrue
 
+GROUP getCurrentLoc
+EVENT FSDJump, FSDJump, "", Condition AlwaysTrue
+EVENT SupercruiseExit, SupercruiseExit, "", Condition AlwaysTrue
+EVENT SupercruiseEntry, SupercruiseEntry, "", Condition AlwaysTrue
+
+GROUP getCurrentSuit
+EVENT SuitLoadout, SuitLoadout, "", Condition AlwaysTrue
+
 GROUP UIStates
 EVENT UIHardpointsDeployed, Hardpoint_State, "", Condition AlwaysTrue
 EVENT UILandingGear, Landing_State, "", Condition AlwaysTrue
@@ -16,7 +24,7 @@ GROUP JoyStates
 EVENT All, setRed, "", Condition AlwaysFalse
 EVENT All, setGreen, "", Condition AlwaysFalse
 EVENT All, setYellow, "", Condition AlwaysFalse
-EVENT All, StickMode, "", gameReady IsTrue
+EVENT All, StickMode, "", Condition AlwaysFalse
 
 //*************************************************************
 // getCurrentShip_loadGame
@@ -101,10 +109,12 @@ ElseIf EventClass_Mode $== MainShipSupercruise
 ElseIf EventClass_Mode $== MainShipNormalSpace
     Global mainState = normalSpace
 ElseIf EventClass_Mode IsOneOf MainShipDockedStarPort,MainShipDockedPlanet,MainShipLanded
-    Global mainState = landed
+    Global mainState = Landed
 Else 
     Global mainState = None/Err
 Print %(mainState)
+Sleep 500
+Call StickMode
 
 END PROGRAM
 
@@ -170,17 +180,23 @@ END PROGRAM
 
 //*************************************************************
 // StickMode
-// Events: All?(gameReady IsTrue)
+// Events: All?(Condition AlwaysFalse)
 //*************************************************************
 PROGRAM StickMode
 
 If mainState $== Taxi Or mainState $== Multicrew Or mainState $== Fighter
     Call setGreen
     DLLCall EDDX52, setString, 0, %(mainState), ID_MODE
-ElseIf mainState $== SRV Or mainState $== OnFoot
+ElseIf mainState $== Landed
     Call setYellow
     DLLCall EDDX52, setString, 0, %(mainState), ID_MODE
-ElseIf gearState IsTrue
+ElseIf mainState $== SRV
+    Call setYellow
+    DLLCall EDDX52, setString, 0, %(mainState), ID_MODE
+ElseIf mainState $== OnFoot
+    Call setYellow
+    DLLCall EDDX52, setString, 0, "On Foot", ID_MODE
+ElseIf gearState IsTrue And mainState $!= Landed
     Call setYellow
     DLLCall EDDX52, setString, 0, "Gear Down", ID_MODE
 ElseIf HPState IsTrue
@@ -194,6 +210,56 @@ ElseIf mainState $== superluminal And HPState IsFalse And gearState IsFalse
     DLLCall EDDX52, setString, 0, Superluminal, ID_MODE
 Else 
     DLLCall EDDX52, setString, 0, "MODE ERR", ID_MODE
+
+END PROGRAM
+
+//*************************************************************
+// SuitLoadout
+// Events: SuitLoadout
+//*************************************************************
+PROGRAM SuitLoadout
+
+Global currentSuit = %(EventClass_SuitName_Localised)
+Print Set Suit to %(currentSuit)
+
+END PROGRAM
+
+//*************************************************************
+// FSDJump
+// Events: FSDJump
+//*************************************************************
+PROGRAM FSDJump
+
+Global currentLoc = %(EventClass_StarSystem)
+Print Set Loc to: %(currentLoc)
+
+END PROGRAM
+
+//*************************************************************
+// SupercruiseExit
+// Events: SupercruiseExit
+//*************************************************************
+PROGRAM SupercruiseExit
+
+If EventWhereAmI Empty
+    Global currentLoc = UNKNOWN
+Else 
+    Global currentLoc = %(EventWhereAmI)
+Print Set location to: %(currentLoc)
+
+END PROGRAM
+
+//*************************************************************
+// SupercruiseEntry
+// Events: SupercruiseEntry
+//*************************************************************
+PROGRAM SupercruiseEntry
+
+If EventWhereAmI Empty
+    Global currentLoc = UNKNOWN
+Else 
+    Global currentLoc = %(EventWhereAmI)
+Print Set loc to: %(currentLoc)
 
 END PROGRAM
 
